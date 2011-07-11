@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<viewer>
+<!--  Первый в списке альбом отображается при загрузке страницы. Не отображается в меню -->
+	  <album name="menu1" >
+<!--		<photo src="01.jpg">Photo 1</photo>
+		<photo src="02.jpg">Photo 1</photo>	-->
+	
+                <img src="photos/thumb_image1.jpg" src1="photos/image1.jpg"/>
+                <img src="photos/thumb_image2.jpg" src1="photos/image2.jpg" />
+				<img src="photos/thumb_image3.jpg" src1="photos/image3.jpg" />
+
+			
+	  </album>
+	 
+	<album name="menu2" >
+
+				<img src="photos/thumb_image4.jpg" src1="photos/image4.jpg" />
+				<img src="photos/thumb_image5.jpg" src1="photos/image5.jpg" />
+	 </album>
+	 
+	<album name="menu3" >
+				<img src="photos/thumb_image1.jpg" src1="photos/image1.jpg"/>
+                <img src="photos/thumb_image2.jpg" src1="photos/image2.jpg" />
+				<img src="photos/thumb_image3.jpg" src1="photos/image3.jpg" />
+				<img src="photos/thumb_image5.jpg" src1="photos/image5.jpg" />
+				<img src="photos/thumb_image4.jpg" src1="photos/image4.jpg" />
+	 </album>
+
+</viewer>

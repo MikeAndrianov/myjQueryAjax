@@ -1,0 +1,188 @@
+body{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Calibri';	
+	/*background: #222222;*/	/*  Цвет фона  */
+	color:white;
+	/*overflow: hidden;*/ /*отсутвует полоса прокрутки */
+}
+
+#mainContainer{
+	background: black;
+/*	border: 6px solid red;*/
+		/*================Закругление изображения======================*/
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+	/*=============================================================*/
+	 width:80%
+}
+
+#logoName a{
+	text-decoration: none;
+	color: white;
+	font-size: 30px;
+	}
+
+#slogan{
+	color: white;
+	font-family: Monotype Corsiva;
+	text-align:center;
+	margin-right: 10px;
+	font-size: 25px;
+}
+
+
+a{
+	text-decoration: none;
+}
+
+
+#menu ul, li{	
+	color: white;
+	align: right;	
+	position: relative;	
+	display:inline;	
+	font
+}
+
+#menu a{
+	text-decoration: none;
+	color: white;
+	background: orange;
+	font-size: 20px;
+	font-weight: bold;
+}
+#menu a:hover{
+	text-decoration: none;
+	color: orange;
+	background: white;
+	font-weight: bold;
+}
+
+
+/* Фотографии */
+#gallery img {
+  border: 6px solid #fff;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+}
+
+
+#content{ 
+	/*width:80%;*/
+	height:450px; 
+	/*background:#666699*/;
+	border:1px solid white;
+	margin-bottom:20px; 
+	/*================Закругление изображения======================*/
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+	/*=============================================================*/
+	/*margin-left:10%;*/
+	/*margin-right:10%*/
+	background:url(background.jpg);
+}
+
+/*===========закругляет первый элемент меню=======================================*/
+.forFirstMenu{
+
+	-moz-border-radius: 10px 0px 0px 10px;
+    -webkit-border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0px 0px 10px; /* future proofing */
+    -khtml-border-radius: 10px 0px 0px 10px; /* for old Konqueror browsers */
+}
+/*===============================================================================*/
+
+#buttonSlideShow a{
+	text-decoration: none;
+	color: white;
+	background: orange;
+	font-size: 20px;
+	font-weight:bold;
+	/*================Закругление изображения======================*/
+	-moz-border-radius: 10px 0px 0px 10px;
+    -webkit-border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0px 0px 10px; /* future proofing */
+    -khtml-border-radius: 10px 0px 0px 10px; /* for old Konqueror browsers */
+	/*=============================================================*/
+}
+
+#buttonSlideShow a:hover{
+	text-decoration: none;
+	color: orange;
+	background: white;
+}
+	
+
+#gallery {
+	/*background-color: #444;*/
+	padding: 10px;
+	width: 520px;
+}
+
+
+#gallery img {
+	border: 5px solid white;
+	border-width: 5px 5px 20px;
+}
+
+#gallery  a:hover img {
+	border: 5px solid orange;
+	border-width: 5px 5px 20px;
+	color: #fff;
+}
+
+/*#gallery a:hover { color: #fff; }*/
+/*================================================================*/
+
+
+#kv1{ 
+ width:60px;
+ height:65px; 
+ float:left; 
+ background:YellowGreen;
+  margin:20px; 
+  color:white;
+  font-family: 'Calibri';	
+    display:none;
+}  
+#kv2{ 
+width:60px;
+ height:75px; 
+ float:left; 
+ background:YellowGreen;
+  margin:20px; 
+  color:white;
+  display:none;
+} 
+#kv3{ 
+width:60px;
+ height:95px; 
+ float:left; 
+ background:YellowGreen;
+  margin:20px; 
+  color:white;
+  display:none;
+} 
+
+#drPict{ /*стиль для перемещающихся картинок*/
+	border: 10px solid white;
+	margin 4px;
+	border-bottom: 40px solid white;
+	box-shadow:3px 3px 4px #333333;
+	/*================Закругление изображения======================*/
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+	/*=============================================================*/
+	z-index: 2;
+}
+
