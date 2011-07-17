@@ -21,7 +21,7 @@ function init(){
 		}	
 	 ); */
 	 
-/*	function randomPosition(){
+	function randomPosition(){
 		$('#gallery img').each( function(index) {
   			var left = Math.floor( Math.random() * 450 + 20 );
   			var top = Math.floor( Math.random() * 200 + 100 );
@@ -29,7 +29,7 @@ function init(){
   			$(this).css( 'top', top+'px' );
 								}
 		); 
-	}*/
+	}
 
 $.ajax({
 		type: 	"GET",
@@ -66,7 +66,7 @@ var id4= $("a.selected").attr('id');
 					$("#gallery img").css("opacity", "0").hide();	
 		   			$("#gallery img").draggable({containment:"#content"}); 
 					$('#gallery a').lightBox();
-					//randomPosition(); 
+					randomPosition(); 
 					$("#gallery img").show().animate( {	opacity:"1"} , 1500);
 				}	
 				

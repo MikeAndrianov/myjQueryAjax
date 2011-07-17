@@ -17,7 +17,7 @@
 }
 #jquery-lightbox a img { border: none; }
 #lightbox-container-image-box {
-	/*================Закругление рамки======================*/
+	/*================Закругление рамки========================*/
 	-moz-border-radius: 20px 20px 0 0;
     -webkit-border-radius: 20px 20px 0 0;
     border-radius: 20px 20px 0 0; /* future proofing */
