@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <viewer>
 <!--  Первый в списке альбом отображается при загрузке страницы. Не отображается в меню -->
-	  <album name="menu1" >
-<!--		<photo src="01.jpg">Photo 1</photo>
-		<photo src="02.jpg">Photo 1</photo>	-->
+	  <album name="flowers" id="0">
 	
-                <img src="photos/thumb_image1.jpg" src1="photos/image1.jpg"/>
-                <img src="photos/thumb_image2.jpg" src1="photos/image2.jpg" />
-				<img src="photos/thumb_image3.jpg" src1="photos/image3.jpg" />
-
+                <img src="photos/flowers/small/small_image1.jpg" src1="photos/flowers/image1.jpg"/>
+                <img src="photos/flowers/small/small_image2.jpg" src1="photos/flowers/image2.jpg" />
+				<img src="photos/flowers/small/small_image3.jpg" src1="photos/flowers/image3.jpg" />
+				<img src="photos/flowers/small/small_image4.jpg" src1="photos/flowers/image4.jpg" />
+				<img src="photos/flowers/small/small_image5.jpg" src1="photos/flowers/image5.jpg" />
+				<img src="photos/flowers/small/small_image6.jpg" src1="photos/flowers/image6.jpg" />
 			
 	  </album>
 	 
-	<album name="menu2" >
+	<album name="plants" id="1">
 
-				<img src="photos/thumb_image4.jpg" src1="photos/image4.jpg" />
-				<img src="photos/thumb_image5.jpg" src1="photos/image5.jpg" />
+				<img src="photos/plants/small/small_image4.jpg" src1="photos/plants/image4.jpg"/>
+				<img src="photos/plants/small/small_image5.jpg" src1="photos/plants/image5.jpg"/>
 	 </album>
 	 
-	<album name="menu3" >
-				<img src="photos/thumb_image1.jpg" src1="photos/image1.jpg"/>
-                <img src="photos/thumb_image2.jpg" src1="photos/image2.jpg" />
-				<img src="photos/thumb_image3.jpg" src1="photos/image3.jpg" />
-				<img src="photos/thumb_image5.jpg" src1="photos/image5.jpg" />
-				<img src="photos/thumb_image4.jpg" src1="photos/image4.jpg" />
+	<album name="trees" id="2">
+				<img src="photos/trees/small/small_image1.jpg" src1="photos/trees/image1.jpg"/>
+				<img src="photos/trees/small/small_image2.jpg" src1="photos/trees/image2.jpg"/>
+				<img src="photos/trees/small/small_image3.jpg" src1="photos/trees/image3.jpg"/>
 	 </album>
 
 </viewer>
