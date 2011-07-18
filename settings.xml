@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <viewer>
 <!--  Первый в списке альбом отображается при загрузке страницы. Не отображается в меню -->
-	  <album name="flowers" id="0">
-	
-                <img src="photos/flowers/small/small_image1.jpg" src1="photos/flowers/image1.jpg"/>
-                <img src="photos/flowers/small/small_image2.jpg" src1="photos/flowers/image2.jpg" />
-				<img src="photos/flowers/small/small_image3.jpg" src1="photos/flowers/image3.jpg" />
-				<img src="photos/flowers/small/small_image4.jpg" src1="photos/flowers/image4.jpg" />
-				<img src="photos/flowers/small/small_image5.jpg" src1="photos/flowers/image5.jpg" />
-				<img src="photos/flowers/small/small_image6.jpg" src1="photos/flowers/image6.jpg" />
-			
-	  </album>
-	 
-	<album name="plants" id="1">
-
-				<img src="photos/plants/small/small_image4.jpg" src1="photos/plants/image4.jpg"/>
-				<img src="photos/plants/small/small_image5.jpg" src1="photos/plants/image5.jpg"/>
-	 </album>
-	 
-	<album name="trees" id="2">
-				<img src="photos/trees/small/small_image1.jpg" src1="photos/trees/image1.jpg"/>
-				<img src="photos/trees/small/small_image2.jpg" src1="photos/trees/image2.jpg"/>
-				<img src="photos/trees/small/small_image3.jpg" src1="photos/trees/image3.jpg"/>
-	 </album>
-
+	<album name="flowers" path="photos/flowers/" >	
+		<img src="image1.jpg" />
+		<img src="image2.jpg" />
+		<img src="image3.jpg" />
+		<img src="image4.jpg" />
+		<img src="image5.jpg" />
+		<img src="image6.jpg" />			
+	</album>	 
+	<album name="plants" path="photos/plants/" >
+		<img src="image4.jpg" />
+		<img src="image5.jpg" />
+	</album>	 
+	<album name="trees" path="photos/trees/" >
+		<img src="image1.jpg" />
+		<img src="image2.jpg" />
+		<img src="image3.jpg" />
+	</album>
 </viewer>
