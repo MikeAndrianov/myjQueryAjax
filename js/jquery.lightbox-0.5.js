@@ -1,4 +1,18 @@
+/**
+ * jQuery lightBox plugin
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * and adapted to me for use like a plugin from jQuery.
+ * @name jquery-lightbox-0.5.js
+ * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @version 0.5
+ * @date April 11, 2008
+ * @category jQuery plugin
+ * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
+ * @license CC Attribution-No Derivative Works 2.5 Brazil - http://creativecommons.org/licenses/by-nd/2.5/br/deed.en_US
+ * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ */
 
+// Offering a Custom Alias suport - More info: http://docs.jquery.com/Plugins/Authoring#Custom_Alias
 (function($) {
 	/**
 	 * $ is an alias to jQuery object
@@ -7,9 +21,13 @@
 	$.fn.lightBox = function(settings) {
 		// Settings to configure the jQuery lightBox plugin how you like
 		settings = jQuery.extend({
+			// Configuration related to slideshow,
+			slideshow: false,
+			nextSlideDelay: 3000,
+		
 			// Configuration related to overlay
 			overlayBgColor: 		'#000',		// (string) Background color to overlay; inform a hexadecimal value like: #RRGGBB. Where RR, GG, and BB are the hexadecimal values for the red, green, and blue values of the color.
-			overlayOpacity:			0.9,		// (integer) Opacity value to overlay; inform: 0.X. Where X are number from 0 to 9
+			overlayOpacity:			0.8,		// (integer) Opacity value to overlay; inform: 0.X. Where X are number from 0 to 9
 			// Configuration related to navigation
 			fixedNavigation:		false,		// (boolean) Boolean that informs if the navigation (next and prev button) will be fixed or not in the interface.
 			// Configuration related to images
@@ -34,15 +52,40 @@
 		},settings);
 		// Caching the jQuery object with all elements matched
 		var jQueryMatchedObj = this; // This, in this context, refer to jQuery object
+
 		/**
 		 * Initializing the plugin calling the start function
 		 *
 		 * @return boolean false
 		 */
+		 
 		function _initialize() {
+			if(settings.slideshow){
+				var tmFunc = function(){ _doSlideShow(); };
+				setTimeout(tmFunc, settings.nextSlideDelay);
+			}
+		
 			_start(this,jQueryMatchedObj); // This, in this context, refer to object (link) which the user have clicked
 			return false; // Avoid the browser following the link
 		}
+		/**
+		 * Slides to next image
+		 *
+		 */		
+		function _doSlideShow(){
+			settings.activeImage++;
+			if(settings.activeImage >= settings.imageArray.length){
+				settings.activeImage = 0;
+			}			
+			
+			_set_image_to_view();
+			
+			var tmFunc = function(){ _doSlideShow(); };
+			if($('#jquery-lightbox').length > 0){
+                setTimeout(tmFunc, settings.nextSlideDelay);
+			}
+		}
+		
 		/**
 		 * Start the jQuery lightBox plugin
 		 *
@@ -73,7 +116,42 @@
 			// Call the function that prepares image exibition
 			_set_image_to_view();
 		}
-
+		/**
+		 * Create the jQuery lightBox plugin interface
+		 *
+		 * The HTML markup will be like that:
+			<div id="jquery-overlay"></div>
+			<div id="jquery-lightbox">
+				<div id="lightbox-container-image-box">
+					<div id="lightbox-container-image">
+						<img src="../fotos/XX.jpg" id="lightbox-image">
+						<div id="lightbox-nav">
+							<a href="#" id="lightbox-nav-btnPrev"></a>
+							<a href="#" id="lightbox-nav-btnNext"></a>
+						</div>
+						<div id="lightbox-loading">
+							<a href="#" id="lightbox-loading-link">
+								<img src="../images/lightbox-ico-loading.gif">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="lightbox-container-image-data-box">
+					<div id="lightbox-container-image-data">
+						<div id="lightbox-image-details">
+							<span id="lightbox-image-details-caption"></span>
+							<span id="lightbox-image-details-currentNumber"></span>
+						</div>
+						<div id="lightbox-secNav">
+							<a href="#" id="lightbox-secNav-btnClose">
+								<img src="../images/lightbox-btn-close.gif">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		 *
+		 */
 		function _set_interface() {
 			// Apply the HTML markup into body tag
 			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"><span id="lightbox-image-details-caption"></span><span id="lightbox-image-details-currentNumber"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	

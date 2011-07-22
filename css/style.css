@@ -68,13 +68,16 @@ a{
 }
 
 /* Фотографии */
+
 #gallery img {
-  border: 6px solid #fff;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
   -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+	border: 5px solid white;
+	border-width: 5px 5px 20px;
+	width: 80px;
+	height: auto;
 }
-
 
 #content{ 
 	/*width:80%;*/
@@ -187,5 +190,15 @@ width:60px;
     -khtml-border-radius: 10px; /* for old Konqueror browsers */
 	/*=============================================================*/
 	z-index: 2;
+}
+
+#viewer{
+	width: 850px;						/*Ширина фотографии*/
+	height: 567px;						/*Высота фотографии*/
+	position: relative;
+}
+.active{
+	color: rgb(190,0,0) !important;
+	background: rgb(190,0,0) !important; /*Цвет активного элемента управления*/
 }
 

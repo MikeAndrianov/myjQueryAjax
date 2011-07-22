@@ -3,11 +3,15 @@ var MaxZIndex=1;
 	var albums = new Array();
 	var photos = new Array();
 	var photos_small = new Array();
+	var photosPath = new Array();
+	var photos_smallPath = new Array();
 	var str_small="small_";
+	var currentAlbum=0; 
+	var SlideshowAvalible=true;
 //====================================================
-$(function() {
-	$('#gallery a').lightBox();
-});
+/*$(function() {
+	$("#gallery a").lightBox({ slideshow: true, nextSlideDelay: 1000});
+});	*/
 	
 $(document).ready(init); 
 
@@ -15,7 +19,7 @@ function init(){
 	 $("#gallery img").draggable(
 		{containment:"#content"}
 	 ); 
-	
+
 /*	$("#gallery img").hover().mousedown(
 		function(){
 			$(this).css( "z-index", MaxZIndex);
@@ -57,6 +61,7 @@ function init(){
 					j = 0;		
 				}); 
 			});  
+currentAlbum=$(".menu.selected").attr('id');alert(currentAlbum);
 /*======================¬≈–’Õ≈≈ Ã≈Õﬁ==================================*/	
 			for (j = 0; j < albums.length; j++){
 				buffer = $(".menu").html();
@@ -77,8 +82,11 @@ function init(){
 		 
 				$("#gallery img").css("opacity", "0").hide();	
 				$("#gallery img").draggable({containment:"#content"}); 
-				$('#gallery a').lightBox();
-				randomPosition(); 
+				/*$('#gallery a').lightBox();*/
+				//============SLIDESHOW(on)================================================
+				$("#gallery a").lightBox({ slideshow: SlideshowAvalible, nextSlideDelay: 5000});
+				//=====================================================================
+				//randomPosition(); 
 				$("#gallery img").show().animate( {	opacity:"1"} , 1500);
 				
 				$("#gallery img").hover().mousedown (function(){
@@ -89,12 +97,20 @@ function init(){
 			}, function(){}); //ƒŒ¡¿¬Àﬂ≈Ã œ”—“”ﬁ ‘-÷»ﬁ Ú.Í. hover(1,2), „‰Â 2-ÍÓ„‰‡ Ï˚¯ÍÛ Û·Ë‡ÂÏ '
 		
 			$(".menu a:first").addClass("forFirstMenu");
+			
+//alert($(".menu a.selected").attr('id'));
+			
+
+//$("#buttonSlideShow").click(SlideShow($(".menu.selected").attr('id')));
+			
 		}			
 	});						
-} 
-
-$("#buttonSlideShow").click(SlideShow());
-function SlideShow() {
-		
 }
 
+function SlideShow(){
+	SlideshowAvalible=true;
+				//============SLIDESHOW(on)================================================
+				//$("#gallery a").lightBox({ slideshow: SlideshowAvalible, nextSlideDelay: 3000});
+				//=====================================================================
+	_doSlideShow();
+}
