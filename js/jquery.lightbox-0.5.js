@@ -232,6 +232,19 @@
 			// Get current width and height
 			var intCurrentWidth = $('#lightbox-container-image-box').width();
 			var intCurrentHeight = $('#lightbox-container-image-box').height();
+		
+/*			if(intImageWidth > 600 ) {
+       			intImageHeight = (intImageHeight/intImageWidth)*600;
+				intImageWidth = 600;
+        		$('#lightbox-image').css({ width: 600 });
+       			var intCurrentWidth = 600;
+			}*/
+//=======================================================================================			
+			intImageHeight=540;
+			intImageWidth = (intImageWidth/intImageHeight)*540;
+			$('#lightbox-image').css({ height: 540 });
+			var intCurrentHeight = 540;
+//=======================================================================================			
 			// Get the width and height of the selected image plus the padding
 			var intWidth = (intImageWidth + (settings.containerBorderSize * 2)); // Plus the imageґs width and the left and right padding value
 			var intHeight = (intImageHeight + (settings.containerBorderSize * 2)); // Plus the imageґs height and the left and right padding value
@@ -247,7 +260,7 @@
 					___pause(100);	
 				}
 			} 
-			$('#lightbox-container-image-data-box').css({ width: intImageWidth });
+			$('#lightbox-container-image-data-box').css({ width: intImageWidth });//нижняя часть рамки (информация о фотке)
 			$('#lightbox-nav-btnPrev,#lightbox-nav-btnNext').css({ height: intImageHeight + (settings.containerBorderSize * 2) });
 		};
 		/**

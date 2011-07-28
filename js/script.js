@@ -61,7 +61,7 @@ function init(){
 					j = 0;		
 				}); 
 			});  
-currentAlbum=$(".menu.selected").attr('id');alert(currentAlbum);
+currentAlbum=$(".menu.selected").attr('id');
 /*======================бепумее лемч==================================*/	
 			for (j = 0; j < albums.length; j++){
 				buffer = $(".menu").html();
