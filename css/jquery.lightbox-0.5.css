@@ -24,11 +24,12 @@
     -khtml-border-radius: 20px 20px 0 0; /* for old Konqueror browsers */
 	/*=============================================================*/
 	position: relative;
-	background-color: #fff;
-	width: 250px;
-	height: 250px;
-	/*width: 850;
-	height: 567;*/
+/*	background-color: #fff;*/
+	background-color: Grey;
+/*	width: 250px;
+	height: 250px; */
+width: auto !important;
+height: auto !important;
 	margin: 0 auto;
 	z-index: 100000;
 }
@@ -69,12 +70,14 @@
 }
 
 #lightbox-container-image-data-box {
-	font: 10px Verdana, Helvetica, sans-serif;
-	background-color: #fff;
+	font: 14px Verdana, Helvetica, sans-serif;
+/*	background-color: #fff; */
+	background-color: grey;
 	margin: 0 auto;
 	line-height: 1.4em;
 	overflow: auto;
-	width: 100%;
+/*	width: 100%; */
+width: auto !important;
 	padding: 0 10px 0;
 
 	/*================Закругление изображения======================*/
@@ -86,10 +89,11 @@
 }
 #lightbox-container-image-data {
 	padding: 0 10px; 
-	color: #666; 
+/*	color: #666;  */
+	color: black; 
 }
 #lightbox-container-image-data #lightbox-image-details { 
-	width: 70%; 
+	width: 70%;  
 	float: left; 
 	text-align: left; 
 }	
@@ -100,9 +104,15 @@
 	padding-bottom: 1.0em;	
 }			
 #lightbox-secNav-btnClose {
-	width: 66px; 
+	width: 86px; 
 	float: right;
 	padding-bottom: 0.7em;	
+	opacity: 0.4;
 }
 
-#lightbox img#lightboxImage{ width: 400px; height: auto;}
+/*#lightbox img#lightboxImage#lightbox-image{ width: 400px; height: auto;} */
+#lightbox img#lightboxImage{ height: 400px; width: auto;}
+#lightbox-image{ 
+	height: 500px !important;
+	width: auto;
+ }

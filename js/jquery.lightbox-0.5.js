@@ -205,6 +205,7 @@
 		function _set_image_to_view() { // show the loading
 			// Show the loading
 			$('#lightbox-loading').show();
+
 			if ( settings.fixedNavigation ) {
 				$('#lightbox-image,#lightbox-container-image-data-box,#lightbox-image-details-currentNumber').hide();
 			} else {
@@ -229,22 +230,12 @@
 		 * @param integer intImageHeight The image´s height that will be showed
 		 */
 		function _resize_container_image_box(intImageWidth,intImageHeight) {
+			intImageHeight=200;
+			$("#lightbox-image").css({ height: intImageHeight+'px' });
 			// Get current width and height
 			var intCurrentWidth = $('#lightbox-container-image-box').width();
 			var intCurrentHeight = $('#lightbox-container-image-box').height();
-		
-/*			if(intImageWidth > 600 ) {
-       			intImageHeight = (intImageHeight/intImageWidth)*600;
-				intImageWidth = 600;
-        		$('#lightbox-image').css({ width: 600 });
-       			var intCurrentWidth = 600;
-			}*/
-//=======================================================================================			
-			intImageHeight=540;
-			intImageWidth = (intImageWidth/intImageHeight)*540;
-			$('#lightbox-image').css({ height: 540 });
-			var intCurrentHeight = 540;
-//=======================================================================================			
+				
 			// Get the width and height of the selected image plus the padding
 			var intWidth = (intImageWidth + (settings.containerBorderSize * 2)); // Plus the image´s width and the left and right padding value
 			var intHeight = (intImageHeight + (settings.containerBorderSize * 2)); // Plus the image´s height and the left and right padding value
