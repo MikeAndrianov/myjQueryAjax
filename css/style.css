@@ -107,12 +107,14 @@ width: 60px;
 	background: orange;
 	font-size: 20px;
 	font-weight:bold;
+	/*top: -20px;*/
 	/*================Закругление изображения======================*/
 	-moz-border-radius: 10px 0px 0px 10px;
     -webkit-border-radius: 10px 0px 0px 10px;
     border-radius: 10px 0px 0px 10px; /* future proofing */
     -khtml-border-radius: 10px 0px 0px 10px; /* for old Konqueror browsers */
 	/*=============================================================*/
+	cursor: pointer;
 }
 
 #buttonSlideShow a:hover{

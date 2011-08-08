@@ -14,7 +14,6 @@ var MaxHeight;
 	$("#gallery a").lightBox({ slideshow: true, nextSlideDelay: 1000});
 });	*/
 $(document).ready(init); 
- 
 	$("#gallery img").hover().mousedown(
 		function(){
 			$(this).css( "z-index", MaxZIndex);
@@ -85,17 +84,18 @@ $("#gallery").css('width', w1+'px');
 				}); 
 			});  
 currentAlbum=$(".menu.selected").attr('id');
+$("#buttonSlideShow").hide();
 /*======================ВЕРХНЕЕ МЕНЮ==================================*/	
 			for (j = 0; j < albums.length; j++){
 				buffer = $(".menu").html();
 				$(".menu").html(buffer + "<a href="+"''" + "id="+j+ " >" + " "+albums[j][0]+" " + "</a>");
 			} 			
 /*====================================================================*/	
-
-			$(".menu a").hover(function(){ //ПОЧЕМУ ЕСЛИ НАПИСАТЬ .click , ТО ВСЁ ПОЯВЛЯЕТСЯ И ТУТ ЖЕ ПРОПАДАЕТ? 		
+$(".menu a:first").addClass("forFirstMenu");
+			$(".menu a").hover(function(){
 				$("a.selected").removeClass();
 				$(this).addClass("selected");							
-				var Path=albums[$("a.selected").attr('id')][1]; //Доделать... проверять на /. При отсуствии, доставлять самому		 
+				var Path=albums[$("a.selected").attr('id')][1];	 
 				$("#gallery").html("");
 				for (j = 0; j < photos[$("a.selected").attr('id')].length; j++){				
 				 	buffer = $("#gallery").html();
@@ -107,11 +107,20 @@ currentAlbum=$(".menu.selected").attr('id');
 				$('#gallery a').lightBox();
 
 				//============SLIDESHOW(on)================================================
-				$("#gallery a").lightBox({ slideshow: SlideShowAvailable, nextSlideDelay: 3000});
+				$("#gallery a").lightBox({ slideshow: SlideShowAvailable, nextSlideDelay: 4000});
 				//=====================================================================
+				$("#buttonSlideShow").show();
 randomPosition(); 
 HeightImg();
-
+			$("#buttonSlideShow").toggle( 
+				function(){
+					$("#buttonSlideShow a").text("Slideshow off"); $("#gallery a").lightBox({ slideshow: false, nextSlideDelay: 4000});
+				}, 
+				function(){
+					$("#buttonSlideShow a").text("Slideshow on"); $("#gallery a").lightBox({ slideshow: true, nextSlideDelay: 4000});
+				}
+			);
+			
 	$("#gallery img").show().animate( {	opacity:"1"} , 1500);
 
 
@@ -120,15 +129,9 @@ HeightImg();
 					if (MaxZIndex==99999) {MaxZIndex=0;}
 					MaxZIndex++;							
 				})
-//$("#gallery").animate( {opacity: 1}, 1500);
-//			})
-			}, function(){}); //ДОБАВЛЯЕМ ПУСТУЮ Ф-ЦИЮ т.к. hover(1,2), где 2-когда мышку убираем '
-		
-//			$(".menu a:first").addClass("forFirstMenu");			
 
-//$("#buttonSlideShow").click(SlideShow($(".menu.selected").attr('id')));
-			
-		}			
+			}, function(){}); //ДОБАВЛЯЕМ ПУСТУЮ Ф-ЦИЮ т.к. hover(1,2), где 2-когда мышку убираем '			
+		}		
 	});						
 }
 
@@ -139,20 +142,4 @@ HeightImg();
 				//=====================================================================
 	_doSlideShow();
 } */
-$(document).click(function(){
-/*	var div = document.getElementById ("#gallery");
-if (div.hasAttribute(".................src................")) alert ("__click__");
-			
-            if (div.getBoundingClientRect) {        // Internet Explorer, Firefox 3+, Google Chrome, Opera 9.5+, Safari 4+
-                var rect = div.getBoundingClientRect ();
-                x = rect.left;
-                y = rect.top;
-                w = rect.right - rect.left;
-                h = rect.bottom - rect.top;
-                alert (" Left: " + x + "\n Top: " + y + "\n Width: " + w + "\n Height: " + h);
-            }
-            else {
-                alert ("Your browser does not support this example!");
-            }
-*/			
-});
+

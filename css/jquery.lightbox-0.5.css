@@ -110,9 +110,16 @@ width: auto !important;
 	opacity: 0.4;
 }
 
+#lightbox-secNav-btnPlay {
+	width: 86px; 
+	float: right;
+	padding-bottom: 0.7em;	
+	opacity: 0.4;
+}
+
 /*#lightbox img#lightboxImage#lightbox-image{ width: 400px; height: auto;} */
 #lightbox img#lightboxImage{ height: 400px; width: auto;}
 #lightbox-image{ 
-	height: 500px !important;
+	height: 567px !important;
 	width: auto;
  }
