@@ -85,6 +85,7 @@ $("#gallery").css('width', w1+'px');
 			});  
 currentAlbum=$(".menu.selected").attr('id');
 $("#buttonSlideShow").hide();
+
 /*======================бепумее лемч==================================*/	
 			for (j = 0; j < albums.length; j++){
 				buffer = $(".menu").html();
@@ -114,10 +115,10 @@ randomPosition();
 HeightImg();
 			$("#buttonSlideShow").toggle( 
 				function(){
-					$("#buttonSlideShow a").text("Slideshow off"); $("#gallery a").lightBox({ slideshow: false, nextSlideDelay: 4000});
+					$("#buttonSlideShow a").text("Slideshow off"); $("#gallery a").lightBox({ slideshow: false, nextSlideDelay: 4000}); SlideShowAvailable=false;
 				}, 
 				function(){
-					$("#buttonSlideShow a").text("Slideshow on"); $("#gallery a").lightBox({ slideshow: true, nextSlideDelay: 4000});
+					$("#buttonSlideShow a").text("Slideshow on"); $("#gallery a").lightBox({ slideshow: true, nextSlideDelay: 4000}); SlideShowAvailable=true;
 				}
 			);
 			

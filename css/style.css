@@ -94,10 +94,10 @@ width: 60px;
 /*===========закругляет первый элемент меню=======================================*/
 .forFirstMenu{
 
-	-moz-border-radius: 10px 0px 0px 10px;
-    -webkit-border-radius: 10px 0px 0px 10px;
-    border-radius: 10px 0px 0px 10px; 
-    -khtml-border-radius: 10px 0px 0px 10px; 
+	-moz-border-radius: 10px 0px 0px 10px !important;
+    -webkit-border-radius: 10px 0px 0px 10px !important;
+    border-radius: 10px 0px 0px 10px !important; 
+    -khtml-border-radius: 10px 0px 0px 10px !important; 
 } 
 /*===============================================================================*/
 
