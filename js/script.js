@@ -19,7 +19,7 @@ $(document).ready(init);
 			$(this).css( "z-index", MaxZIndex);
 			if(MaxZIndex==99999){MaxZIndex=1;}
 			MaxZIndex++;
-		}	
+		}
 	); 
 	
 	
@@ -28,9 +28,9 @@ function init(){
 /*var w1 = $("#gallery").width()/100*75;
 $("#gallery").css('width', w1+'px');
 */
-	 $("#gallery img").draggable(
-		{containment: "#content"}
-	 ); 
+	 //$("#g").draggable(
+		//{containment: "#content"}
+	 //); 
 
 	function randomPosition(){
 		$('#gallery img').each( function(index) {
@@ -58,7 +58,7 @@ $("#gallery").css('width', w1+'px');
 			$(this).css('border-top-width',pH+'px');
 		}); 				
 	}
-	
+
 	var i=0;
 	var j=0;
 	$.ajax({
@@ -104,7 +104,98 @@ $(".menu a:first").addClass("forFirstMenu");
 														 Path+photos[$("a.selected").attr('id')][j] +" />" + "</a>");  
 				};
 		 $("#gallery img").css("opacity", "0").hide();
-				$("#gallery img").draggable({containment:"#content"});				
+		//		$("#gallery img").draggable({containment:"#content"});	
+//============================================INERTIA=====================================================
+	$(function() {
+    var $d = $("#gallery img");
+
+    var x1, x2, y1, y2, t1, t2, // Posititons/Time
+        minDistance = 40,       // Minimum px distance object must be dragged to enable momentum.
+        friction = 1;           // Set friction higher to make tossing harder
+    
+    var onMouseMove = function(e) {
+        var mouseEvents = $d.data("mouseEvents");
+        if (e.timeStamp - mouseEvents[mouseEvents.length - 1].timeStamp > 40) {
+            mouseEvents.push(e);
+            if (mouseEvents.length > 2) {
+                mouseEvents.shift();
+            }
+        }
+    };
+
+    var onMouseUp = function() {
+        $(document).unbind("mousemove mouseup");
+    };
+
+    $d.draggable({
+		containment: "#content",
+        start: function(e, ui) {
+            $d.data("mouseEvents", [e]);
+            $(document).mousemove(onMouseMove).mouseup(onMouseUp);
+        },
+        stop: function(e, ui) {
+            $d.stop();
+            $d.css("text-indent", 100);
+
+            var lastE = $d.data("mouseEvents").shift();
+
+            x1 = lastE.pageX;
+            y1 = lastE.pageY;
+            t1 = lastE.timeStamp;
+            x2 = e.pageX;
+            y2 = e.pageY;
+            t2 = e.timeStamp;
+
+            // Deltas
+            var dX = x2 - x1,
+                dY = y2 - y1,
+                dMs = Math.max(t2 - t1, 1);
+
+            // Speeds
+            var speedX = Math.max(Math.min(dX / dMs, 1), -1),
+                speedY = Math.max(Math.min(dY / dMs, 1), -1);
+
+            // Distance moved (Euclidean distance)
+            var distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+
+            if (distance > minDistance) {
+                // Momentum
+                var lastStepTime = new Date();
+                
+                var maxLeft = $(window).width() - ($d.width() + 10),
+                    maxTop = $(window).height() - ($d.height() + 10);
+
+                $d.animate({
+                    textIndent: 0
+                }, {
+                    duration: Math.max(Math.abs(speedX), Math.abs(speedY)) * 6000,
+                    step: function(currentStep) {
+                        speedX *= (currentStep / 100);
+                        speedY *= (currentStep / 100);
+
+                        var now = new Date();
+                        var stepDuration = now.getTime() - lastStepTime.getTime();
+
+                        lastStepTime = now;
+
+                        var position = $d.position();
+
+                        var newLeft = (position.left + (speedX * stepDuration / friction)),
+                            newTop = (position.top + (speedY * stepDuration / friction));
+                        newLeft = newLeft > maxLeft ? maxLeft : newLeft < 10 ? 10 : newLeft;
+                        newTop  = newTop  > maxTop  ? maxTop  : newTop  < 10 ? 10 : newTop;
+
+                        $d.css({
+                            left: newLeft + "px",
+                            top: newTop + "px"
+                        });
+                    }
+                });
+            }
+        }
+    });
+});
+//==================================================================================================================
 				$('#gallery a').lightBox();
 
 				//============SLIDESHOW(on)================================================
@@ -123,7 +214,12 @@ HeightImg();
 			);
 			
 	$("#gallery img").show().animate( {	opacity:"1"} , 1500);
-
+//==================рамка для просмотренных фото==================	
+	$("#gallery img").click(function(){
+			$(this).css("border-color", " #96F169"); 
+	});
+//================================================================	
+$(".menu a:first").addClass("forFirstMenu");
 
 				$("#gallery img").hover().mousedown (function(){				
 					$(this).css("z-index",MaxZIndex);

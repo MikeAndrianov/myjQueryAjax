@@ -111,7 +111,7 @@
 				}
 			}
 			while ( settings.imageArray[settings.activeImage][0] != objClicked.getAttribute('href') ) {
-				settings.activeImage++;
+				settings.activeImage++; 
 			}
 			// Call the function that prepares image exibition
 			_set_image_to_view();

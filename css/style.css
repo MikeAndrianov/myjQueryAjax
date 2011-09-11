@@ -4,21 +4,21 @@ body{
 	padding: 0;
 	margin: 0;
 	font-family: 'Calibri';	
-	/*background: #222222;*/	/*  Цвет фона  */
-	color: gray;
+	background: #222222;	/*  Цвет фона  */
+	/*color: gray;*/
 	/*overflow: hidden;*/ /*отсутвует полоса прокрутки */
 }
 
 #mainContainer{
-	background: grey;
+	background: #222222;
 /*	border: 6px solid red;*/
+
 	/*================Закругление изображения======================*/
-	-moz-border-radius: 10px;
+	/*-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    border-radius: 10px; /* future proofing */
-    -khtml-border-radius: 10px; /* for old Konqueror browsers */
-	/*=============================================================*/
-	 width: 100%
+    border-radius: 10px; 
+    -khtml-border-radius: 10px; */
+	 width: 100%;
 }
 
 #logoName a{
@@ -31,7 +31,7 @@ body{
 	color: white;
 	font-family: Monotype Corsiva;
 	/*text-align:center; */
-	margin-right: 10px;
+	margint: 100px;
 	font-size: 25px;
 }
 
@@ -73,8 +73,9 @@ a{
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
 	border: 5px solid white;
 	border-width: 5px 5px 20px;
-width: 60px;
+	width: 70px;
 	height: auto;
+	position:absolute;
 }
 
 #content{ 
@@ -89,7 +90,7 @@ width: 60px;
 	/*=============================================================*/
 	/*margin-left:10%;*/
 	/*margin-right:10%*/
-	background: url(background.jpg);
+	background: #222222;
 }
 /*===========закругляет первый элемент меню=======================================*/
 .forFirstMenu{
@@ -152,36 +153,6 @@ width: 60px;
 	margin-right: 10px;
 	font-size: 25px;
 }
-
-#kv1{ 
- width:60px;
- height:65px; 
- float:left; 
- background:YellowGreen;
-  margin:20px; 
-  color:white;
-  font-family: 'Calibri';	
-    display:none;
-}  
-#kv2{ 
-width:60px;
- height:75px; 
- float:left; 
- background:YellowGreen;
-  margin:20px; 
-  color:white;
-  display:none;
-} 
-#kv3{ 
-width:60px;
- height:95px; 
- float:left; 
- background:YellowGreen;
-  margin:20px; 
-  color:white;
-  display:none;
-} 
-
 
 
 .active{

@@ -8,12 +8,7 @@
 		<img src="004.jpg" />
 		<img src="005.jpg" />
 		<img src="006.jpg" />
-		<img src="007.jpg" />			
-		<img src="008.jpg" />			
-		<img src="009.jpg" />			
-		<img src="010.jpg" />			
-		<img src="011.jpg" />			
-		<img src="012.jpg" />																		
+		<img src="007.jpg" />																					
 	</album>	 
 	<album name="plants" path="photos/plants/" >
 		<img src="pl_001.jpg" />
@@ -26,9 +21,13 @@
 		<img src="tree_002.jpg" />
 		<img src="tree_003.jpg" />
 	</album>
+	<album name="cars" path="photos/cars/" >
+		<img src="ferrari_italia.jpg" />
+		<img src="lexus_lfa.jpg" />
+		<img src="corvette_zr1.jpg" />
+	</album>
 	<album name="animals" path="photos/animals/" >
 		<img src="an_001.jpg" />
-		<img src="an_002.jpg" />
-		<img src="an_003.jpg" />
+
 	</album>
 </viewer>

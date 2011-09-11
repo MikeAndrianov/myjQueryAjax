@@ -25,13 +25,12 @@
 	/*=============================================================*/
 	position: relative;
 /*	background-color: #fff;*/
-	background-color: Grey;
+	background-color: Gray;
 /*	width: 250px;
 	height: 250px; */
-width: auto !important;
-height: auto !important;
+	width: auto !important;
+	height: auto !important;
 	margin: 0 auto;
-	z-index: 100000;
 }
 #lightbox-container-image { padding: 10px; }
 #lightbox-loading {
@@ -77,7 +76,7 @@ height: auto !important;
 	line-height: 1.4em;
 	overflow: auto;
 /*	width: 100%; */
-width: auto !important;
+	width: auto !important;
 	padding: 0 10px 0;
 
 	/*================Закругление изображения======================*/
@@ -110,12 +109,6 @@ width: auto !important;
 	opacity: 0.4;
 }
 
-#lightbox-secNav-btnPlay {
-	width: 86px; 
-	float: right;
-	padding-bottom: 0.7em;	
-	opacity: 0.4;
-}
 
 /*#lightbox img#lightboxImage#lightbox-image{ width: 400px; height: auto;} */
 #lightbox img#lightboxImage{ height: 400px; width: auto;}
