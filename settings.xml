@@ -6,9 +6,7 @@
 		<img src="002.jpg" />
 		<img src="003.jpg" />
 		<img src="004.jpg" />
-		<img src="005.jpg" />
-		<img src="006.jpg" />
-		<img src="007.jpg" />																					
+		<img src="005.jpg" />																					
 	</album>	 
 	<album name="plants" path="photos/plants/" >
 		<img src="pl_001.jpg" />
@@ -28,6 +26,14 @@
 	</album>
 	<album name="animals" path="photos/animals/" >
 		<img src="an_001.jpg" />
-
+		<img src="an_002.jpg" />
+		<img src="an_003.jpg" />
+		<img src="an_004.jpg" />
+		<img src="an_005.jpeg" />
+		<img src="an_006.jpg" />
+		<img src="an_007.jpg" />
+		<img src="an_008.jpg" />
+		<img src="an_009.jpg" />
+		<img src="an_010.jpeg" />
 	</album>
 </viewer>

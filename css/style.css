@@ -11,14 +11,7 @@ body{
 
 #mainContainer{
 	background: #222222;
-/*	border: 6px solid red;*/
-
-	/*================Закругление изображения======================*/
-	/*-moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px; 
-    -khtml-border-radius: 10px; */
-	 width: 100%;
+	width: 100%;
 }
 
 #logoName a{
@@ -37,13 +30,6 @@ body{
 
 a{
 	text-decoration: none;
-}
-
-.menu ul, li{	
-	color: white;
-	align: right;	
-	position: relative;	
-	display:inline;	
 }
 
 .menu a{
@@ -73,14 +59,21 @@ a{
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
 	border: 5px solid white;
 	border-width: 5px 5px 20px;
-	width: 70px;
+	width: 90px;
 	height: auto;
 	position:absolute;
 }
 
+#gallery  a:hover img {
+	border: 5px solid /*orange*/;
+	border-color: orange !important;
+	border-width: 5px 5px 20px;
+	color: #fff;
+}
+
 #content{ 
 	height: 450px; 
-	border:1px solid white;
+	
 	margin-bottom:20px; 
 	/*================Закругление изображения======================*/
 	-moz-border-radius: 10px;
@@ -91,6 +84,8 @@ a{
 	/*margin-left:10%;*/
 	/*margin-right:10%*/
 	background: #222222;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
 }
 /*===========закругляет первый элемент меню=======================================*/
 .forFirstMenu{
@@ -110,40 +105,60 @@ a{
 	font-weight:bold;
 	/*top: -20px;*/
 	/*================Закругление изображения======================*/
-	-moz-border-radius: 10px 0px 0px 10px;
+	/*-moz-border-radius: 10px 0px 0px 10px;
     -webkit-border-radius: 10px 0px 0px 10px;
     border-radius: 10px 0px 0px 10px; /* future proofing */
-    -khtml-border-radius: 10px 0px 0px 10px; /* for old Konqueror browsers */
+    -khtml-border-radius: 10px 0px 0px 10px;*/ /* for old Konqueror browsers */
 	/*=============================================================*/
 	cursor: pointer;
+	position: absolute;
+/*	margin-top:-20px;*/
+	margin-top:-10px;
+	margin-left:-113px; /* ... переделать по-другому?*/
 }
 
 #buttonSlideShow a:hover{
 	text-decoration: none;
 	color: orange;
 	background: white;
+	cursor: pointer;
 }
 	
+#buttonRotate a{
+	text-decoration: none;
+	color: white;
+	background: orange;
+	font-size: 20px;
+	font-weight:bold;
+	/*top: -20px;*/
+	/*================Закругление изображения======================*/
+	-moz-border-radius: 10px 0px 0px 10px;
+    -webkit-border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0px 0px 10px; /* future proofing */
+    -khtml-border-radius: 10px 0px 0px 10px; /* for old Konqueror browsers */
+	/*=============================================================*/
+	cursor: pointer;
+	position: absolute;
+/*	margin-top:-20px;*/
+	margin-top:-10px;
+	margin-left:-213px; /* ... переделать по-другому?*/
+}
 
-#gallery {	color: #fff;
+#buttonRotate a:hover{
+	text-decoration: none;
+	color: orange;
+	background: white;
+	cursor: pointer;
+}
+
+#gallery {	
+	color: #fff;
 	/*background-color: #444;*/
 	padding: 10px;
 	/*height: 900px !important;*/
+	position:relative;
 }
 
-
-#gallery img {
-	border: 5px solid white;
-	border-width: 5px 5px 20px;
-}
-
-#gallery  a:hover img {
-	border: 5px solid orange;
-	border-width: 5px 5px 20px;
-	color: #fff;
-}
-
-/*#gallery a:hover { color: #fff; }*/
 /*================================================================*/
 
 #footer{
@@ -159,4 +174,3 @@ a{
 	color: rgb(190,0,0) !important;
 	background: rgb(190,0,0) !important; /*Цвет активного элемента управления*/
 }
-

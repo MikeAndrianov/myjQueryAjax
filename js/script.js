@@ -1,5 +1,4 @@
-var MaxZIndex=1;
-
+	var MaxZIndex=1;
 	var albums = new Array();
 	var photos = new Array();
 	var photos_small = new Array();
@@ -8,11 +7,10 @@ var MaxZIndex=1;
 	var str_small="small_";
 	var currentAlbum=0; 
 	var SlideShowAvailable=true;
-var MaxHeight;
-//====================================================
-/*$(function() {
-	$("#gallery a").lightBox({ slideshow: true, nextSlideDelay: 1000});
-});	*/
+	var RotationAvailable=true;
+	var MaxHeight;
+var src;
+
 $(document).ready(init); 
 	$("#gallery img").hover().mousedown(
 		function(){
@@ -25,24 +23,23 @@ $(document).ready(init);
 	
 function init(){ 
 
-/*var w1 = $("#gallery").width()/100*75;
-$("#gallery").css('width', w1+'px');
-*/
-	 //$("#g").draggable(
-		//{containment: "#content"}
-	 //); 
-
 	function randomPosition(){
-		$('#gallery img').each( function(index) {
-			var left = Math.floor( Math.random() * 450 + 20 );
+		$('#gallery img').each( function(index) {  
+			var left = Math.floor( Math.random() *$(window).width()*0.8 );
   			var top = Math.floor( Math.random() * 200 + 100 );
+//======================ÏÎÂÎÐÎÒ ÔÎÒÎ===================================		
+			if(RotationAvailable){	
+				var rot = Math.random()*30-15+'deg';
+				$(this).css('-webkit-transform' , 'rotate('+rot+')');
+ 				$(this).css('-moz-transform' , 'rotate('+rot+')');			
+			}
+//=====================================================================		
   			$(this).css( 'left', left+'px' );
   			$(this).css( 'top', top+'px' );
 		}); 									
 	}
 					
 	function MaxHeightImg(){
-//		var MaxHeight1=0;
 		MaxHeight1=0;
 		$('#gallery img').each( function(index) {
 			if ($(this).height()> MaxHeight1) {
@@ -58,6 +55,133 @@ $("#gallery").css('width', w1+'px');
 			$(this).css('border-top-width',pH+'px');
 		}); 				
 	}
+	
+//========ÓÂÅËÈ×ÈÂÀÍÈÅ ÈÇÎÁÐÀÆÅÍÈß Â ÃÀËÅÐÅÅ ÏÐÈ ÍÀÂÅÄÅÍÈÈ ÍÀ ÍÅÃÎ===============
+function imageIncreasing(){
+	var imageWidth=$("#gallery img").width(); 
+	var imageHeight=$("#gallery img").height(); 
+	$("#gallery img").hover(function(){
+		$(this).animate({width: imageWidth*2, height: imageHeight*2 } , 200)
+		$(this).css( "z-index", MaxZIndex);
+			if(MaxZIndex==99999){MaxZIndex=1;}
+			MaxZIndex++;
+		}, function(){
+			$(this).animate({width: imageWidth, height: imageHeight } , 200);
+	});
+}
+//===============================================================================
+
+//==================ðàìêà äëÿ ïðîñìîòðåííûõ ôîòî==================	
+function BorderForViewedPhotos(){
+	var p1; //ïîçèöèÿ ôîòî ïðè íàæàòèè êëàâèøè ìûøè
+	var p2; //ïîçèöèÿ ôîòî ïîñëå îòïóñêàíèÿ êëàâèøè ìûøè
+	$("#gallery img").mousedown(function(){p1=$(this).position();}).mouseup(function(){
+		p2=$(this).position();
+		if(p1.left==p2.left && p1.top==p2.top){ 
+			$(this).css("border-color", " #96F169");  
+		}
+	});
+}
+//================================================================
+
+//============================================INERTIA=====================================================
+	function Inertia() {
+$("#gallery img").hover(
+		function(){
+
+
+    	var $d = $("#gallery img");
+	    var x1, x2, y1, y2, t1, t2, // Posititons/Time
+    	    minDistance = 40,       // Minimum px distance object must be dragged to enable momentum.
+        	friction = 1;           // Set friction hi gher to make tossing harder
+    
+	    var onMouseMove = function(e) {
+    	    var mouseEvents = $d.data("mouseEvents"); 
+        	if (e.timeStamp - mouseEvents[mouseEvents.length - 1].timeStamp > 40) {
+            	mouseEvents.push(e);
+	            if (mouseEvents.length > 2) {
+    	            mouseEvents.shift();
+        	    }
+	        }
+    	};
+
+	    var onMouseUp = function() {
+    	    $(document).unbind("mousemove mouseup");
+	    };
+
+    	$(this).draggable({
+			containment: "#content",
+	        start: function(e, ui) {
+    	        $(this).data("mouseEvents", [e]);
+        	    $(document).mousemove(onMouseMove).mouseup(onMouseUp);				//src=$(this).attr('src'); 
+	        },
+    	    stop: function(e, ui) {
+        	    $(this).stop();
+            	$(this).css("text-indent", 100);
+	
+    	        var lastE = $(this).data("mouseEvents").shift();
+	
+    	        x1 = lastE.pageX;
+        	    y1 = lastE.pageY;
+            	t1 = lastE.timeStamp;
+	            x2 = e.pageX;
+    	        y2 = e.pageY;
+        	    t2 = e.timeStamp;
+
+            	// Deltas
+	            var dX = x2 - x1,
+    	            dY = y2 - y1,
+        	        dMs = Math.max(t2 - t1, 1);
+
+            	// Speeds
+	            var speedX = Math.max(Math.min(dX / dMs, 1), -1),
+    	            speedY = Math.max(Math.min(dY / dMs, 1), -1);
+
+        	    // Distance moved (Euclidean distance)
+            	var distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+
+	            if (distance > minDistance) {
+    	            // Momentum
+        	        var lastStepTime = new Date();
+                
+            	    var maxLeft = $("#content").width() - ($d.width() + 10),
+                	    maxTop = $("#content").height() - ($d.height() + 20);
+	
+    	            $(this).animate({
+        	            textIndent: 0
+            	    }, {
+                	    duration: Math.max(Math.abs(speedX), Math.abs(speedY)) * 4000,
+                    	step: function(currentStep) {
+	                        speedX *= (currentStep / 100);
+    	                    speedY *= (currentStep / 100);
+	
+	                        var now = new Date();
+    	                    var stepDuration = now.getTime() - lastStepTime.getTime();
+	
+    	                    lastStepTime = now;
+	
+    	                    var position = $(this).position();
+	
+    	                    var newLeft = (position.left + (speedX * stepDuration / friction)),
+        	                    newTop = (position.top + (speedY * stepDuration / friction));
+            	            newLeft = newLeft > maxLeft ? maxLeft : newLeft < 10 ? 10 : newLeft;
+                	        newTop  = newTop  > maxTop  ? maxTop  : newTop  < 10 ? 10 : newTop;
+
+    	                    $(this).css({
+        	                    left: newLeft + "px",
+            	                top: newTop + "px"
+                	        });
+                    	}
+	                });
+    	        }
+        	}
+	    });
+				}
+	
+	
+	); 
+	}
+//==================================================================================================================
 
 	var i=0;
 	var j=0;
@@ -80,11 +204,13 @@ $("#gallery").css('width', w1+'px');
 						j++;
 					})
 					i++;
-					j = 0;		
+					j=0;		
 				}); 
 			});  
-currentAlbum=$(".menu.selected").attr('id');
-$("#buttonSlideShow").hide();
+
+			currentAlbum=$(".menu.selected").attr('id');
+			$("#buttonSlideShow").hide();
+			$("#buttonRotate").hide();
 
 /*======================ÂÅÐÕÍÅÅ ÌÅÍÞ==================================*/	
 			for (j = 0; j < albums.length; j++){
@@ -92,7 +218,7 @@ $("#buttonSlideShow").hide();
 				$(".menu").html(buffer + "<a href="+"''" + "id="+j+ " >" + " "+albums[j][0]+" " + "</a>");
 			} 			
 /*====================================================================*/	
-$(".menu a:first").addClass("forFirstMenu");
+			$(".menu a:first").addClass("forFirstMenu");
 			$(".menu a").hover(function(){
 				$("a.selected").removeClass();
 				$(this).addClass("selected");							
@@ -103,107 +229,25 @@ $(".menu a:first").addClass("forFirstMenu");
 				 	$("#gallery").html(buffer+"<a href="+Path+photos[$("a.selected").attr('id')][j]+">"+"<img src="+
 														 Path+photos[$("a.selected").attr('id')][j] +" />" + "</a>");  
 				};
-		 $("#gallery img").css("opacity", "0").hide();
+			 $("#gallery img").css("opacity", "0").hide();
 		//		$("#gallery img").draggable({containment:"#content"});	
-//============================================INERTIA=====================================================
-	$(function() {
-    var $d = $("#gallery img");
+			
+			$('#gallery a').lightBox();
 
-    var x1, x2, y1, y2, t1, t2, // Posititons/Time
-        minDistance = 40,       // Minimum px distance object must be dragged to enable momentum.
-        friction = 1;           // Set friction higher to make tossing harder
-    
-    var onMouseMove = function(e) {
-        var mouseEvents = $d.data("mouseEvents");
-        if (e.timeStamp - mouseEvents[mouseEvents.length - 1].timeStamp > 40) {
-            mouseEvents.push(e);
-            if (mouseEvents.length > 2) {
-                mouseEvents.shift();
-            }
-        }
-    };
+			//============SLIDESHOW(on)================================================
+			$("#gallery a").lightBox({ slideshow: SlideShowAvailable, nextSlideDelay: 5000});
+			//=========================================================================
+			
+			Inertia();
+			randomPosition(); 
+			HeightImg();
+			//imageIncreasing();
+			BorderForViewedPhotos()
+			$("#buttonSlideShow").show();
+			$("#buttonRotate").show();		
+				
+				//$("#options").hover(function(){
 
-    var onMouseUp = function() {
-        $(document).unbind("mousemove mouseup");
-    };
-
-    $d.draggable({
-		containment: "#content",
-        start: function(e, ui) {
-            $d.data("mouseEvents", [e]);
-            $(document).mousemove(onMouseMove).mouseup(onMouseUp);
-        },
-        stop: function(e, ui) {
-            $d.stop();
-            $d.css("text-indent", 100);
-
-            var lastE = $d.data("mouseEvents").shift();
-
-            x1 = lastE.pageX;
-            y1 = lastE.pageY;
-            t1 = lastE.timeStamp;
-            x2 = e.pageX;
-            y2 = e.pageY;
-            t2 = e.timeStamp;
-
-            // Deltas
-            var dX = x2 - x1,
-                dY = y2 - y1,
-                dMs = Math.max(t2 - t1, 1);
-
-            // Speeds
-            var speedX = Math.max(Math.min(dX / dMs, 1), -1),
-                speedY = Math.max(Math.min(dY / dMs, 1), -1);
-
-            // Distance moved (Euclidean distance)
-            var distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-
-            if (distance > minDistance) {
-                // Momentum
-                var lastStepTime = new Date();
-                
-                var maxLeft = $(window).width() - ($d.width() + 10),
-                    maxTop = $(window).height() - ($d.height() + 10);
-
-                $d.animate({
-                    textIndent: 0
-                }, {
-                    duration: Math.max(Math.abs(speedX), Math.abs(speedY)) * 6000,
-                    step: function(currentStep) {
-                        speedX *= (currentStep / 100);
-                        speedY *= (currentStep / 100);
-
-                        var now = new Date();
-                        var stepDuration = now.getTime() - lastStepTime.getTime();
-
-                        lastStepTime = now;
-
-                        var position = $d.position();
-
-                        var newLeft = (position.left + (speedX * stepDuration / friction)),
-                            newTop = (position.top + (speedY * stepDuration / friction));
-                        newLeft = newLeft > maxLeft ? maxLeft : newLeft < 10 ? 10 : newLeft;
-                        newTop  = newTop  > maxTop  ? maxTop  : newTop  < 10 ? 10 : newTop;
-
-                        $d.css({
-                            left: newLeft + "px",
-                            top: newTop + "px"
-                        });
-                    }
-                });
-            }
-        }
-    });
-});
-//==================================================================================================================
-				$('#gallery a').lightBox();
-
-				//============SLIDESHOW(on)================================================
-				$("#gallery a").lightBox({ slideshow: SlideShowAvailable, nextSlideDelay: 4000});
-				//=====================================================================
-				$("#buttonSlideShow").show();
-randomPosition(); 
-HeightImg();
 			$("#buttonSlideShow").toggle( 
 				function(){
 					$("#buttonSlideShow a").text("Slideshow off"); $("#gallery a").lightBox({ slideshow: false, nextSlideDelay: 4000}); SlideShowAvailable=false;
@@ -213,13 +257,31 @@ HeightImg();
 				}
 			);
 			
-	$("#gallery img").show().animate( {	opacity:"1"} , 1500);
-//==================ðàìêà äëÿ ïðîñìîòðåííûõ ôîòî==================	
-	$("#gallery img").click(function(){
-			$(this).css("border-color", " #96F169"); 
-	});
-//================================================================	
-$(".menu a:first").addClass("forFirstMenu");
+			$("#buttonRotate").toggle( 
+				function(){
+					RotationAvailable=false;
+					$("#buttonRotate a").text("Rotation off"); 
+					$("#gallery img").each(function(){
+										   $(this).css('-webkit-transform' , 'rotate(0)'); $(this).css('-moz-transform' , 'rotate(0)');  
+									  });
+				}, 
+				function(){
+					RotationAvailable=true;
+					$("#buttonRotate a").text("Rotation on"); 
+					$('#gallery img').each(function(index) {  		
+												var rot = Math.random()*30-15+'deg';
+												$(this).css('-webkit-transform' , 'rotate('+rot+')');
+ 												$(this).css('-moz-transform' , 'rotate('+rot+')');			
+									  }); 		
+				}
+			);
+			
+				
+			
+			$("#gallery img").show().animate( {	opacity:"1"} , 1000);
+
+
+	$(".menu a:first").addClass("forFirstMenu");
 
 				$("#gallery img").hover().mousedown (function(){				
 					$(this).css("z-index",MaxZIndex);
@@ -227,16 +289,7 @@ $(".menu a:first").addClass("forFirstMenu");
 					MaxZIndex++;							
 				})
 
-			}, function(){}); //ÄÎÁÀÂËßÅÌ ÏÓÑÒÓÞ Ô-ÖÈÞ ò.ê. hover(1,2), ãäå 2-êîãäà ìûøêó óáèðàåì '			
+			}, function(){});			
 		}		
 	});						
 }
-
-/*function SlideShow(){
-	SlideShowAvailable=true;
-				//============SLIDESHOW(on)================================================
-				//$("#gallery a").lightBox({ slideshow: SlideshowAvailable, nextSlideDelay: 3000});
-				//=====================================================================
-	_doSlideShow();
-} */
-
