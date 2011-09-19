@@ -20,10 +20,7 @@ $(document).ready(init);
 		}
 	); 
 	
-	
-function init(){ 
-
-	function randomPosition(){
+		function randomPosition(){
 		$('#gallery img').each( function(index) {  
 			var left = Math.floor( Math.random() *$(window).width()*0.8 );
   			var top = Math.floor( Math.random() * 200 + 100 );
@@ -182,6 +179,9 @@ $("#gallery img").hover(
 	); 
 	}
 //==================================================================================================================
+	
+	
+function init(){ 
 
 	var i=0;
 	var j=0;
@@ -281,7 +281,7 @@ $("#gallery img").hover(
 			$("#gallery img").show().animate( {	opacity:"1"} , 1000);
 
 
-	$(".menu a:first").addClass("forFirstMenu");
+				$(".menu a:first").addClass("forFirstMenu");
 
 				$("#gallery img").hover().mousedown (function(){				
 					$(this).css("z-index",MaxZIndex);

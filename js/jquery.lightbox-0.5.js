@@ -230,12 +230,33 @@
 		 * @param integer intImageHeight The image´s height that will be showed
 		 */
 		function _resize_container_image_box(intImageWidth,intImageHeight) {
-			intImageHeight=200;
+			//intImageHeight=200;
 			$("#lightbox-image").css({ height: intImageHeight+'px' });
 			// Get current width and height
 			var intCurrentWidth = $('#lightbox-container-image-box').width();
 			var intCurrentHeight = $('#lightbox-container-image-box').height();
-				
+			
+			if(intImageWidth > ($(window).width()-50)) {
+				intImageHeight = (intImageHeight/intImageWidth)*($(window).width()-50);
+				intImageWidth = ($(window).width()-50);
+				if(intImageHeight > ($(window).height()-150)) {
+					intImageWidth = (intImageWidth/intImageHeight)*($(window).height()-150);
+					intImageHeight = ($(window).height()-150);
+				}
+			}
+			else if(intImageHeight > ($(window).height()-150)) {
+				intImageWidth = (intImageWidth/intImageHeight)*($(window).height()-150);
+				intImageHeight = ($(window).height()-150);
+			}
+			$('#lightbox-image').css({ width: intImageWidth, height: intImageHeight });
+/*	if(intImageWidth > ($(window).width()-50)) {
+  		intImageHeight = (intImageHeight/intImageWidth)*($(window).width()-50);
+		intImageWidth = ($(window).width()-50);
+		$('#lightbox-image').css({ width: intImageWidth });
+	}
+	else if (intImageWidth < (document.body.clientWidth-50)) {
+		$('#lightbox-image').css({ width: intImageWidth });
+	}*/
 			// Get the width and height of the selected image plus the padding
 			var intWidth = (intImageWidth + (settings.containerBorderSize * 2)); // Plus the image´s width and the left and right padding value
 			var intHeight = (intImageHeight + (settings.containerBorderSize * 2)); // Plus the image´s height and the left and right padding value
