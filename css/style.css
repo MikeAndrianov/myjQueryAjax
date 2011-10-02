@@ -1,4 +1,5 @@
-body{ 
+body{
+	overflow-x: hidden !important;
 	width: 100%;
 	height: 100%;
 	padding: 0;
@@ -62,6 +63,7 @@ a{
 	width: 90px;
 	height: auto;
 	position:absolute;
+	z-index: 1;
 }
 
 #gallery  a:hover img {
@@ -114,7 +116,7 @@ a{
 	position: absolute;
 /*	margin-top:-20px;*/
 	margin-top:-10px;
-	margin-left:-113px; /* ... переделать по-другому?*/
+	margin-left:-120px; /* ... переделать по-другому?*/
 }
 
 #buttonSlideShow a:hover{
@@ -141,7 +143,7 @@ a{
 	position: absolute;
 /*	margin-top:-20px;*/
 	margin-top:-10px;
-	margin-left:-213px; /* ... переделать по-другому?*/
+	margin-left:-225px; /* ... переделать по-другому?*/
 }
 
 #buttonRotate a:hover{
@@ -159,6 +161,19 @@ a{
 	position:relative;
 }
 
+.textForGallery{
+/*ЗАПРЕЩАЕТ ПОЛЬЗОВАТЕЛЮ ВЫДЕЛЯТЬ ТЕКСТ*/
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;  
+/*=======================================*/
+	z-index: 0;
+	font-size: 100px;
+	font-weight: bold;
+	color: #333;	
+	position: absolute;
+	cursor: default;
+}
 /*================================================================*/
 
 #footer{
